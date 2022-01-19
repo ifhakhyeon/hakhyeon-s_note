@@ -23,7 +23,7 @@ void pick (int n, vector <int> picked, int toPick){
     //고를 수 있는 가장 작은 번호를 계산한다.
  int smallest = picked.empty() ? 0 : picked.back()+1;
 //  cout << smallest;
-    //이 단꼐에서 우너소를 하나 고른다.
+    //이 단계에서 원소를 하나 고른다.
  for(int next = smallest; next < n ; ++next){
      picked.push_back(next);
      pick(n, picked, toPick-1);

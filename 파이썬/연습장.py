@@ -15,17 +15,10 @@ def fastestMaxSum(vector):
 
     return ret
 
-print(fastestMaxSum(a))
+# print(fastestMaxSum(a))
 
 #P. 119 설명 이해
 #인덱스를 반환하기 위해서는 후처리를 해야하구나..
 
-a=((1,3),(1,2))
 
-
-def a ():
-    return True
-    if 1 == 1:
-        print("Tl")
-
-print(a())
+L

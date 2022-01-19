@@ -18,6 +18,10 @@ def hasWord(y,x,str):
     # print("문자",str,len(str))
 
     #기저 사례 판단.
+
+    #위치가 범위에 없으면 False 반환
+    if not(0 <= y <= 4 and 0 <= x <= 4):
+        return False
     #시작하는 위치의 첫글자가 str 의 첫글자랑 다르면 False 반환
     if boggle[y][x] != str[0]:
         # print(8888)
@@ -29,21 +33,23 @@ def hasWord(y,x,str):
         return True
         # print(9999)
 
+
+
     for i in range(len(str)-1):
         #첫째칸은 검사를 했으니 바로 다음칸으로 이동
         for M in move:
             # print("좌표",M)
-            if 0<=(y+M[0])<=4 and 0<=(x+M[1])<=4:
-                if boggle[y+M[0]][x+M[1]] == str[i+1]:
-                    # print("갈위치",boggle[y+M[0]][x+M[1]])
-                    # print("갈위치랑 비교",str[i+1])
-                    # print("다음 들어갈것",str[1:])
+            if boggle[y+M[0]][x+M[1]] == str[i+1]:
+                # print("갈위치",boggle[y+M[0]][x+M[1]])
+                # print("갈위치랑 비교",str[i+1])
+                # print("다음 들어갈것",str[1:])
 
-                    #여기서 if 문을 넣고 결과가 True 가 되도록 반환해야지 위에 len(str) == 1 에서 True 가 반환되기를 바라면
-                    #안된다. 왜냐하면 그건 if 문을 돌려 나온 결과지 hasWord를 돌려 나온 return이 아니기 때문이다. 이건
-                    #재귀함수를 만들 떄 중요한 스킬인거 같다.
-                    if(hasWord(y+M[0],x+M[1],str[1:])):
-                        return True
+                #여기서 if 문을 넣고 결과가 True 가 되도록 반환해야지 위에 len(str) == 1 에서 True 가 반환되기를 바라면
+                #안된다. 왜냐하면 그건 if 문을 돌려 나온 결과지 hasWord를 돌려 나온 return이 아니기 때문이다. 이건
+                #재귀함수를 만들 떄 중요한 스킬인거 같다.
+                if(hasWord(y+M[0],x+M[1],str[1:])):
+                    return True
+
 
     #마찬가지로 여기서 return False가 없으면 틀린 값에 대해서 결과값은 NONE이 나오기 때문에 이것또한 주의해야한 사항이다.
     return False
