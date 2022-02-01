@@ -1,7 +1,2 @@
-items = [1,2,3,3]
-
-def size():
-    return len(items)
-
-def display(msg='ArrayList:'):
-    print(msg,size(),items)
+a="0123456789"
+print(a[1:])
