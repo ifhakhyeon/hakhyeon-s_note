@@ -1,40 +1,26 @@
-def count(str):
-    if str == "w" or str == "b":
-        return 0
-    c_count = 0
-    i = 0
-    index_List = []
-    while c_count != 4:
-        while str[i] == "w" or str[i] == "b":
-            index_List.append(i)
-            i += 1
-            c_count += 1
-            if c_count == 4:
-                print(1, str, index_List)
-                return 1, i, index_List
-        if str[i] == "x":
-            index_List.append(i)
-            i += 1
-            a, b, c = count(str[i:])
-            c_count += a
-            i += b
-        if c_count == 4:
-            print(2, str, index_List)
-            return 1, i, index_List
 
-def sep(str):
-    if str
-    upperLeft = ""
-    upperRight = ""
-    lowerLeft = ""
-    lowerRight = ""
-    pass
+def quad(str, ind):
+    head = str[ind]  # 인덱스 번째의 글자
+    if head == 'w' or head == 'b':  # 상하 바꿔도 변함이 없음
+        return head
+    # let이 w나 b가 아닌 경우=let이 x일때
+    ind += 1  # x가 나온 위치로부터 1칸 뒤
+    upperLeft = quad(tree, ind)
+    ind += len(upperLeft)  # 왼쪽 위가 차지하는 칸수 만큼 뒤
+    upperRight = quad(tree, ind)
+    ind += len(upperRight)  # 오른 위가 차지하는 칸수 만큼 뒤
+    lowerLeft = quad(tree, ind)
+    ind += len(lowerLeft)  # 왼쪽 아래가 차지하는 칸수 만큼 뒤
+    lowerRight = quad(tree, ind)
+    return 'x' + lowerLeft + lowerRight + upperLeft + upperRight
 
-# str1 = """wxwbbbxwwbbxwxbbbwbb"""
-# print(count(str1), len(str1))
 
-str2 = "xwwwxbbwwxwxwbbbwwxxxwwbbbwwwwbxbbww"
-# "xwwwb xwxwbbbww xxxwwbbbwwwwb b"
-print(count(str2), len(str2))
-str3 = "w"
-print(count(str3), len(str3))
+case = int(input())
+for i in range(case):
+    tree = input()
+    print(quad(tree, 0))  # 인덱스=0
+
+# 솔직히 직관적으로 이해가안된다.
+# 직관이 좋다고 스스로 생각하지 말자 아닐 경우
+# 그 직관이 무너지면 다 무너지게 된다.
+# 손으로 어떻게 돌아가는지 확인해보자
