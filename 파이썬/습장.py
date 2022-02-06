@@ -1,23 +1,17 @@
-import sys
-input = sys.stdin.readline
+C = int(input())
+for _ in range(C):
+    a, b, c = map(int, input().split())
+    if c//a == 0:
+        front = str(c)
+        back = '01'
+    else:
+        front = str(c % a)
+    if c//a < 10:
+        if a != 1:
+            back = '0'+str((c//a)+1)
+        else:
+            back = f'0{c}'
+    else:
+        back = str((c//a)+1)
 
-
-str = input().strip()
-str = str.upper()
-
-list = [0 for _ in range(ord("A"), ord("Z")+1)]
-# print(list)
-for i in str:
-    list[ord(i)-ord("A")] += 1
-max = (0,-1)
-max_same = -1
-for i in enumerate(list):
-    if i[1] > max[1]:
-        max = i
-    elif i[1] == max[1]:
-        max_same = max
-
-if max == max_same:
-    print("?")
-else:
-    print(chr(max[0]+ord("A")))
+    print(front+back)
