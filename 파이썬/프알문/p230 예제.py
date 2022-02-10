@@ -23,11 +23,11 @@ for _ in range(C):
     def lis2(start):
         if cache[start] != -1:
             return cache[start]
-        ret = 1
+        cache[start] = 1
         for Next in range(start+1, n):
             if S[start] < S[Next]:
-                ret = max(ret, lis2(Next)+1)
-        return ret
+                cache[start] = max(cache[start], lis2(Next)+1)
+        return cache[start]
     Max = 0
     for i in range(n):
         Max = max(Max, lis2(i))
