@@ -9,11 +9,12 @@ def printret(ret):
 
 def choose(N, M, ret):
 
-    if len(ret) == M:
+    if len(ret) == M+1:
         printret(ret)
         return
 
-    for i in range(1, N+1):
-        choose(N, M, ret+[i])
+    for i in range(max(1, max(ret)), N+1):
+        if i not in ret :
+            choose(N, M, ret+[i])
 
-choose(N,M,[])
+choose(N,M,[0])

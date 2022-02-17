@@ -3,10 +3,8 @@ input = sys.stdin.readline
 N, M = map(int, input().split())
 def printret(ret):
     for i in ret:
-        if i != 0:
-            print(i, end=' ')
+        print(i, end=' ')
     print()
-
 def choose(N, M, ret):
 
     if len(ret) == M:
@@ -14,6 +12,7 @@ def choose(N, M, ret):
         return
 
     for i in range(1, N+1):
-        choose(N, M, ret+[i])
+        if i not in ret :
+            choose(N, M, ret+[i])
 
 choose(N,M,[])
