@@ -5,10 +5,10 @@ meeting = []
 for _ in range(N):
     a, b = map(int, input().split())
     meeting.append((a,b))
+# 하 아니 이생각을 못해서 진짜 개고생 했다.. 왜 이리 단순하냐..
+# 조금만 더 생각해보자 학현아.
 meeting.sort(key=lambda x : x[0])
 meeting.sort(key=lambda x : x[1])
-
-
 
 canmeeting = []
 last = meeting[0]
