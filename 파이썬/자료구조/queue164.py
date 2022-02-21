@@ -81,13 +81,13 @@ class CircularDeque(CircularQueue):
     def getRear(self):
         return self.items[self.rear]
 
-dq = CircularDeque()
-
-for i in range(9):
-    if i%2 == 0:
-        dq.addRear(i)
-    else:
-        dq.addFront(i)
-
-dq.display()
+# dq = CircularDeque()
+#
+# for i in range(9):
+#     if i%2 == 0:
+#         dq.addRear(i)
+#     else:
+#         dq.addFront(i)
+#
+# dq.display()
 
