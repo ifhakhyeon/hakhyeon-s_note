@@ -5,35 +5,34 @@ class TNode:
         self.data = data
         self.left = left
         self.right = right
-
 # a = TNode(0,1,2)
 # print(a.right)
 # print(a.data)
 # print(a.left)
 
 # 전위 순위 루트->왼->오
-def preorder(n):
+def preorder(n: TNode):
     if n is not None:
         print(n.data, end=' ')
         print(n.left)
         print(n.right)
 
 # 중위 순위 왼->루트->오
-def inorder(n):
+def inorder(n: TNode):
     if n is not None:
         print(n.left)
         print(n.data, end=' ')
         print(n.right)
 
 # 후위 순위 왼->오->루트
-def postorder(n):
+def postorder(n: TNode):
     if n is not None:
         print(n.left)
         print(n.right)
         print(n.data, end=' ')
 
 # 레벨 순회
-def levelorder(root):
+def levelorder(root: TNode):
     queue = queue164.CircularQueue() # 큐 객체 초기화
     queue.enqueue(root)              # 최초의 큐에는 루트노드만 들어있음
     while not queue.isEmpy():        # 큐가 공백 상태가 아닐 동안
@@ -45,20 +44,20 @@ def levelorder(root):
 
 # 노드 갯수 구하기
 # 후위 순회의 방식 사용
-def count_node(n):
+def count_node(n: TNode):
     if n is None:                    # 공백이면 0 을 반환
         return 0
     else:                            # 좌우 서브트리의 노드수의 합 +1을 반환
         return 1+count_node(n.left) + count_node(n.right)
 
 # 트리의 높이 구하기
-def calc_height(n):
+def calc_height(n: TNode):
     if n in None:
         return 0
-    hLeft = calc_height(n.left)
-    hRight = calc_height(n.right)
+    hleft = calc_height(n.left)
+    hright = calc_height(n.right)
 
-    return max(hRight, hLeft) +1
+    return max(hright, hleft) + 1
 
 class MaxHeap:                                          # 최대 힙 클래스
     def __init__(self):                                 # 생성자
@@ -86,7 +85,7 @@ class MaxHeap:                                          # 최대 힙 클래스
         if not self.isempty():
             hroot = self.heap[1]                        # 삭제할 루트를 복사해둠
             last = self.heap[self.size()]               # 마지막 노드
-            while (child <= self.size()):               # 마지막 노드 이전까지
+            while child <= self.size():               # 마지막 노드 이전까지
                 # 만약 오른쪽 노드가 더 크면 child를 1증가 (왼쪽은 기본노드)
                 if child < self.size() and self.left(parent) < self.right(parent):
                     child += 1
@@ -94,7 +93,7 @@ class MaxHeap:                                          # 최대 힙 클래스
                     break                               # 삽입 위치를 찾음. down heap 종료
                 self.heap[parent] = self.heap[child]    # 아니면 down heap 계속
                 parent = child
-                child  *= 2
+                child *= 2
             self.heap[parent] = last                    # 맨 마지막 노드를 parent 위치에 복사
             self.heap.pop(-1)                           # 맨 마지막 노드 삭제
             return hroot                                # 저장해두었던 루트 반환
@@ -114,14 +113,19 @@ class MaxHeap:                                          # 최대 힙 클래스
 # 적도록 하겠다..
 
 # 노드 생성과 삽입
+
+# 노드 생성과 삽입
 class Node:
-    def __init__(self,data):
+    def __init__(self, data):
         self.left = None
         self.right = None
         self.data = data
 
-class BinarySearchTree(Node):
-    def insert(self, data):
+class BinarySearchTree(object):
+    def __init__(self):
+        self.root = None
+
+    def insert(self, data) -> bool:
         self.root = self._insert_value(self.root, data)
         return self.root is not None
 
@@ -136,18 +140,18 @@ class BinarySearchTree(Node):
         return node
 
     # 노드 탐색
-    def find(self, key):
+    def find(self, key) -> bool:
         return self._find_value(self.root, key)
 
     def _find_value(self, root, key):
         if root is None or root.data == key:
             return root is not None
-        elif key < root.data:
+        elif key <= root.data:
             return self._find_value(root.left, key)
         else:
             return self._find_value(root.right, key)
 
-    def delete(self, key):
+    def delete(self, key) -> bool:
         self.root, deleted = self._delete_value(self.root, key)
         return deleted
 
@@ -160,6 +164,7 @@ class BinarySearchTree(Node):
         if key == node.data:
             deleted = True
             # 삭제할 노드가 자식이 두개일 경우
+            # data가 아니고 그냥 노드 객체이므로 이 if 문은 성립
             if node.left and node.right:
                 # 오른쪽 서브 트리에서 가장 왼쪽에 있는 노드를 찾고 교체
                 parent, child = node, node.right
@@ -182,3 +187,25 @@ class BinarySearchTree(Node):
             node.right, deleted = self._delete_value(node.right, key)
         return node, deleted
 
+    def minnode(self) -> int:
+        node = self.root
+        while node.left is not None:
+            node = node.left
+        return node.data
+
+    def maxnode(self) -> int:
+        node = self.root
+        while node.right is not None:
+            node = node.right
+        return node.data
+
+    def dump(self):
+        def print_subtree(node):
+            # 전위 순회로 출력
+            if node is not None:
+                print(f'{node.data}')
+                print_subtree(node.left)
+                print_subtree(node.right)
+
+        root = self.root
+        print_subtree(root)
