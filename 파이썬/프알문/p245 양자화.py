@@ -20,7 +20,7 @@ def quantize(start, part):
     for size in range(1, L - start+1):
         cache[start][part] = min(cache[start][part],
                                  minerror(start, start + size - 1) + quantize(start + size, part - 1))
-        # print(start, part, size)
+        # print(mid, part, size)
         # for i in cache:
         #     print(i)
         # print('---------------')
@@ -40,7 +40,7 @@ for _ in range(C):
         qsum += i*i
         sumlist.append(sum)
         qsumlist.append(qsum)
-    # start = 0일 경우 기저사례
+    # mid = 0일 경우 기저사례
     sumlist.append(0); qsumlist.append(0)
 
     ret = quantize(0, p)
