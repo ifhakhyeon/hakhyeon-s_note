@@ -141,28 +141,39 @@ class BinarySearchTree(object):
                 elif node.right is None:
                     return self.minnode()  # 만약 오른쪽이 None이면 비교한느 값보다 큰값 없음
 
-C = int(input())
-for _ in range(C):
-    n = int(input())
-    russia = list(map(int, input().split(', ')))
-    korea = list(map(int, input().split(', ')))
-    skorea = BinarySearchTree()
+korea = list(map(int, input().split()))
+skorea = BinarySearchTree()
 
-    for i in korea:
-        skorea.insert(i)
-    # print(skorea.minnode())
-    wins = 0
-    for i in russia:
-        who = skorea.findlmn(i)
-        if who is not None:
-            # print('?', i, who)
-            if i <= who:
-                wins += 1
-                skorea.delete(who)
-            else:
-                skorea.delete(who)
-        elif who is None:
-            pass
-    print(wins)
-
-#https://algospot.com/judge/problem/read/MATCHORDER
+for i in korea:
+    a = skorea.insert(i)
+# print(skorea.minnode())
+skorea.dump()
+print()
+b = skorea.delete(30)
+print(b)
+c = skorea.delete(999)
+print(c)
+skorea.dump()
+# C = int(input())
+# for _ in range(C):
+#     n = int(input())
+#     russia = list(map(int, input().split()))
+#     korea = list(map(int, input().split()))
+#     skorea = BinarySearchTree()
+#
+#     for i in korea:
+#         skorea.insert(i)
+#     # print(skorea.minnode())
+#     skorea.dump()
+#     wins = 0
+#     for i in russia:
+#         who = skorea.findlmn(i)
+#         print('?', i, who)
+#         if i <= who:
+#             wins += 1
+#             skorea.delete(who)
+#         else:
+#             skorea.delete(who)
+#     print(wins)
+#
+# # https://algospot.com/judge/problem/read/MATCHORDER
