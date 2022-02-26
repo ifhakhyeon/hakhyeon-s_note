@@ -1,8 +1,8 @@
 # for i in range(n):
 #     pass
 #
-# a =[[0 for _ in range(n)] for _ in range(n)]
-# print(a)
+# numlist =[[0 for _ in range(n)] for _ in range(n)]
+# print(numlist)
 
 
 # friend_done = []

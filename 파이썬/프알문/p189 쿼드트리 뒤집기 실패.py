@@ -1,11 +1,11 @@
 def count(str):
-    if str == "w" or str == "b":
+    if str == "w" or str == "ans":
         return 0
     c_count = 0
     i = 0
     index_List = []
     while c_count != 4:
-        while str[i] == "w" or str[i] == "b":
+        while str[i] == "w" or str[i] == "ans":
             index_List.append(i)
             i += 1
             c_count += 1
