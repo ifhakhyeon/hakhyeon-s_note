@@ -2,16 +2,14 @@ import sys
 
 input = sys.stdin.readline
 
-# f = open(r"C:\Users\H30208\Desktop\조학현 공부노트\input.txt", 'r')
-N = int(input())
-# N = int(f.readline())
+f = open(r"C:\Users\H30208\Desktop\조학현 공부노트\input.txt", 'r')
+# N = int(input())
+N = int(f.readline())
 paper = []
 for _ in range(N):
-    paper.append(list(map(int, input().split())))
-    # paper.append(list(map(int, f.readline().split())))
-
-
-# f.close()
+    # paper.append(list(map(int, input().split())))
+    paper.append(list(map(int, f.readline().split())))
+f.close()
 
 # paper = np.array(paper)
 
@@ -29,13 +27,13 @@ def zeroone(list, N):
 def count(paper, N):
     zero = 0
     one = 0
-    if N == 1:
-        if paper[0][0] == 1:
-            return 0, 1
-        elif paper[0][0] == 0:
-            return 1, 0
-        else:
-            return 0, 0
+    # if N == 1:
+    #     if paper[0][0] == 1:
+    #         return 0, 1
+    #     elif paper[0][0] == 0:
+    #         return 1, 0
+    #     else:
+    #         return 0, 0
 
     if zeroone(paper, N) == 1:
         return 0, 1
