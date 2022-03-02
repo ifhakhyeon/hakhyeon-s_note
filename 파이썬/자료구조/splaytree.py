@@ -1,21 +1,96 @@
-import sys
-sys.setrecursionlimit(10 ** 5)
-input = sys.stdin.readline
-
-
 class Node:
     def __init__(self, data):
+        self.data = data
         self.left = None
         self.right = None
-        self.data = data
+        self.parent = None
         self.count = 1
-class BinarySearchTree(object):
+
+class splaytree():
     def __init__(self):
         self.root = None
+    def find_grandp(self, node):
+        if node is not None and node.parent is not None:
+            return node.parent.parent
+        else:
+            return None
+    # 바꾸려는게 부모의 왼쪽자식일때
+    def rotate_left(self, node):
+        c = node.right
+        p = node.parent
+        g = self.find_grandp(node)
+        if g is not None:
+            if g.left == p:
+                g.left = node; node.parent = g
+                node.right = p; p.parent = node
+                p.left = c
+                if c:
+                    c.parent = p
+            elif g.right == p:
+                g.right = node; node.parent = g
+                node.right = p; p.parent = node
+                p.left = c
+                if c:
+                    c.parent = p
+        elif g is None:
+            node.right = p; p.parent = node
+            p.left = c
+            if c:
+                c.parent = p
+            self.root = node
+            node.parent = None
 
+    def rotate_right(self, node):
+        c = node.left
+        p = node.parent
+        g = self.find_grandp(node)
+        if g is not None:
+            if g.left == p:
+                g.left = node; node.parent = g
+                node.left = p; p.parent = node
+                p.right = c
+                if c:
+                    c.parent = p
+            elif g.right == p:
+                g.right = node; node.parent = g
+                node.left = p; p.parent = node
+                p.right = c
+                if c:
+                    c.parent = p
+        elif g is None:
+            node.left = p; p.parent = node
+            p.right = c
+            if c:
+                c.parent = p
+            self.root = node
+            node.parent = None
+
+    def splay(self, node):
+        while True:
+            if self.root == node:
+                break
+            elif self.find_grandp(node) is None:
+                if node.parent and node.parent.left == node:
+                    self.rotate_left(node)
+                    break
+                elif node.parent and node.parent.right == node:
+                    self.rotate_right(node)
+                    break
+            elif self.find_grandp(node).left and self.find_grandp(node).left.left == node:
+                self.rotate_left(node.parent)
+                self.rotate_left(node)
+            elif self.find_grandp(node).right and self.find_grandp(node).right.right == node:
+                self.rotate_right(node.parent)
+                self.rotate_right(node)
+            else:
+                if node.parent.left == node:
+                    self.rotate_left(node)
+                    self.rotate_right(node)
+                elif node.parent.right == node:
+                    self.rotate_right(node)
+                    self.rotate_left(node)
     def insert(self, data):
         current_node = self.root
-
         if current_node is not None:
             while True:
                 if data < current_node.data:
@@ -23,26 +98,24 @@ class BinarySearchTree(object):
                         current_node = current_node.left
                     else:
                         current_node.left = Node(data)
+                        current_node.left.parent = current_node
+                        self.splay(current_node.left)
                         break
                 elif data > current_node.data:
                     if current_node.right is not None:
                         current_node = current_node.right
                     else:
                         current_node.right = Node(data)
+                        current_node.right.parent = current_node
+                        self.splay(current_node.right)
                         break
-                # 이미 삽입하려는 값이 있으면 왼쪽에 노드 하나를 추가하고 연결 시켜줌
                 elif data == current_node.data:
-                    # link = current_node.left
-                    # current_node.left = Node(data)      # 새로운 노드랑 현재위치의 왼쪽자식과 연결
-                    # current_node.left.left = link                    # 현재위치의 노드와 새로운 노드 연결
-                    # 30의 자식이 두개 존재 실패임.
                     current_node.count += 1
+                    self.splay(current_node)
                     break
-
         else:
             self.root = Node(data)
         return
-
 
     def search(self, data):
         current_node = self.root
@@ -134,18 +207,6 @@ class BinarySearchTree(object):
 
         return True
 
-    def minnode(self) -> int:
-        node = self.root
-        while node.left is not None:
-            node = node.left
-        return node.data
-
-    def maxnode(self) -> int:
-        node = self.root
-        while node.right is not None:
-            node = node.right
-        return node.data
-
     def dump(self):
         def print_subtree(node):
             # 전위 순회로 출력
@@ -156,48 +217,25 @@ class BinarySearchTree(object):
                     c -= 1
                 print('left')
                 print_subtree(node.left)
+
                 print('right')
                 print_subtree(node.right)
         root = self.root
         print_subtree(root)
 
-    # least minus num
-    def findlmn(self, num) -> int:
-        node = self.root
-
-        if node is None:
-            return -1
-
-        while True:
-            if node.data == num:
-                return node.data
-
-            elif node.data > num:  # 현제 노드 값이 비교하는 값보다 크고
-                if node.left is not None:  # 왼쪽 자식이 None이 아니고
-                    if node.left.data >= num:  # 왼쪽 자식이 비교하는 값보다 크면
-                        node = node.left  # 노드 체인지
-
-                    elif node.left.data < num:  # 왼쪽 작식이 더 작으면
-                        return node.data  # 현제 노드 반환
-
-                elif node.left is None:  # 왼쪽이 None이면 현제 노드 반환
-                    return node.data
-
-            elif node.data < num:
-                if node.right is not None:  # 현제 노드가 비교하는 값보다 작으면
-                    node = node.right  # 더 큰값 찾으로 오른쪽 자식으로
-                elif node.right is None:
-                    return self.minnode()  # 만약 오른쪽이 None이면 비교한느 값보다 큰값 없음
-
-
-tree = BinarySearchTree()
+tree = splaytree()
 
 # arr = list(map(int, input().split()))
-# arr = [50, 40, 30, 45, 20, 35, 44, 46, 10, 25]
-arr = [40, 50]
+arr = [50, 40, 30, 45, 20, 35, 44, 46, 10, 25]
+# arr = [50, 40, 60]
 for i in arr:
     tree.insert(i)
+    print('---')
     tree.dump()
+    print('---')
+# print(tree.root.data)
+# print(tree.root.right.right.data)
+# tree.dump()
 # print()
 # tree.insert(30)
 # tree.insert(26)

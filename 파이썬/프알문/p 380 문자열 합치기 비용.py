@@ -12,9 +12,10 @@ for _ in range(C):
     N = int(input())
     # length = list(map(int, f.readline().split()))
     length = list(map(int, input().split()))
-
     ret = 0
     while True:
+        # print(length)
+        # print(ret)
         minnum1 = min(length)
         length.remove(minnum1)
         minnum2 = min(length)
