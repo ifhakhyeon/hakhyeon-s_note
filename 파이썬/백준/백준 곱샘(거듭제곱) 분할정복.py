@@ -18,4 +18,4 @@ def AexpoB(A, B):
         ret %= C
     return ret
 if __name__ == "__main__":
-    print(AexpoB(A, B))
+    a = AexpoB(A, B)
