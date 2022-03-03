@@ -22,11 +22,11 @@ class BinarySearchTree(object):
         if node is None:
             node = Node(data)
         else:
-            if data < node.data:
+            if data < node.key:
                 node.left = self._insert_value(node.left, data)
-            elif data > node.data:
+            elif data > node.key:
                 node.right = self._insert_value(node.right, data)
-            elif data == node.data:
+            elif data == node.key:
                 node.count += 1
                 pass
         return node
@@ -89,13 +89,13 @@ class BinarySearchTree(object):
         node = self.root
         while node.left is not None:
             node = node.left
-        return node.data
+        return node.key
 
     def maxnode(self) -> int:
         node = self.root
         while node.right is not None:
             node = node.right
-        return node.data
+        return node.key
 
     def dump(self):
         def print_subtree(node):
@@ -103,7 +103,7 @@ class BinarySearchTree(object):
             if node is not None:
                 times = node.count
                 while times > 0:
-                    print(f'{node.data}', end = ' ')
+                    print(f'{node.key}', end =' ')
                     times -= 1
                 print('left', end=' ')
                 print_subtree(node.left)
@@ -121,21 +121,21 @@ class BinarySearchTree(object):
             return -1
 
         while True:
-            if node.data == num:
-                return node.data
+            if node.key == num:
+                return node.key
 
-            elif node.data > num:  # 현제 노드 값이 비교하는 값보다 크고
+            elif node.key > num:  # 현제 노드 값이 비교하는 값보다 크고
                 if node.left is not None:  # 왼쪽 자식이 None이 아니고
-                    if node.left.data >= num:  # 왼쪽 자식이 비교하는 값보다 크면
+                    if node.left.key >= num:  # 왼쪽 자식이 비교하는 값보다 크면
                         node = node.left  # 노드 체인지
 
-                    elif node.left.data < num:  # 왼쪽 작식이 더 작으면
-                        return node.data  # 현제 노드 반환
+                    elif node.left.key < num:  # 왼쪽 작식이 더 작으면
+                        return node.key  # 현제 노드 반환
 
                 elif node.left is None:  # 왼쪽이 None이면 현제 노드 반환
-                    return node.data
+                    return node.key
 
-            elif node.data < num:
+            elif node.key < num:
                 if node.right is not None:  # 현제 노드가 비교하는 값보다 작으면
                     node = node.right  # 더 큰값 찾으로 오른쪽 자식으로
                 elif node.right is None:

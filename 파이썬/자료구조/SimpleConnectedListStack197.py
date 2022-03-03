@@ -21,11 +21,11 @@ class LinkedStack:
         if not self.isEmpty():
             n = self.top
             self.top = n.link
-            return n.data
+            return n.key
 
     def peek(self):
         if not self.isEmpty():
-            return self.top.data
+            return self.top.key
 
     def size(self):
         node = self.top
@@ -39,6 +39,6 @@ class LinkedStack:
         print(msg, end ='')
         node = self.top
         while not node ==None:
-            print(node.data, end=' ')
+            print(node.key, end=' ')
             node = node.link
         print()

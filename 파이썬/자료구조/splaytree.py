@@ -1,5 +1,8 @@
+# import sys
+# sys.setrecursionlimit(10 ** 6)
 class Node:
-    def __init__(self, data):
+    def __init__(self, key, data):
+        self.key = key
         self.data = data
         self.left = None
         self.right = None
@@ -106,48 +109,48 @@ class splaytree():
         self.update()
         return
 
-    def insert(self, data):
+    def insert(self, key, data):
         current_node = self.root
         if current_node is not None:
             while True:
-                if data < current_node.data:
+                if key < current_node.key:
                     if current_node.left is not None:
                         current_node = current_node.left
                     else:
-                        current_node.left = Node(data)
+                        current_node.left = Node(key, data)
                         current_node.left.parent = current_node
                         self._splay(current_node.left)
                         break
-                elif data >= current_node.data:
+                elif key >= current_node.key:
                     if current_node.right is not None:
                         current_node = current_node.right
                     else:
-                        current_node.right = Node(data)
+                        current_node.right = Node(key, data)
                         current_node.right.parent = current_node
                         self._splay(current_node.right)
                         break
         else:
-            self.root = Node(data)
+            self.root = Node(key, data)
         return
 
-    def search(self, data):
+    def search(self, key):
         current_node = self.root
         while current_node:
-            if current_node.data == data:
-                return True
-            elif current_node.data > data:
+            if current_node.key == key:
+                return current_node.data
+            elif current_node.key > key:
                 current_node = current_node.left
             else:
                 current_node = current_node.right
         return False
     # 위에랑 똑같은데 True 대신 Node 반환
 
-    def _search_node(self, data):
+    def _search_node(self, key):
         current_node = self.root
         while current_node:
-            if current_node.data == data:
+            if current_node.key == key:
                 return current_node
-            elif current_node.data > data:
+            elif current_node.key > key:
                 current_node = current_node.left
             else:
                 current_node = current_node.right
@@ -163,9 +166,9 @@ class splaytree():
             node = node.left
         return node
 
-    def delete(self, data) -> bool:
+    def delete(self, key) -> bool:
         is_search = False
-        delete_node = self._search_node(data)
+        delete_node = self._search_node(key)
         self._splay(delete_node)
         if delete_node:
             # 양쪽 다 있음
@@ -209,6 +212,42 @@ class splaytree():
             node.right.size = self._sub_count(node.right)
             node.size += node.right.size + 1
         return node.size
+    # def _sub_count(self, node):
+    #     root = self.root
+    #     nodelist = []
+    #     nodelist.append(root)
+    #     while True:
+    #         if not nodelist:
+    #             break
+    #         current_node = nodelist[-1]
+    #         current_node.size = None
+    #         docount = False
+    #
+    #         if not current_node.right and not current_node.left:
+    #             docount = True
+    #
+    #         if current_node.right:
+    #             if current_node.right.size:
+    #                 current_node.size += current_node.right.size
+    #                 docount = True
+    #             else:
+    #                 docount = False
+    #
+    #         if current_node.left:
+    #             if current_node.left.size:
+    #                 current_node.size += current_node.left.size
+    #                 docount = True
+    #             else:
+    #                 docount = False
+    #
+    #         if not docount:
+    #             if current_node.right:
+    #                 nodelist.append(current_node.right)
+    #             if current_node.left:
+    #                 nodelist.append(current_node.left)
+    #
+    #         elif docount:
+    #             nodelist.pop()
 
     def _sub_sum(self, node):
         node.sum = node.data
@@ -230,7 +269,7 @@ class splaytree():
     # k번 째 값 찾기
     # k 는 1부터
 
-    def fine(self, k):
+    def find(self, k):
         current_root = self.root
         while True:
             # 첫번째는 가장 작은 노드를 찾으면 됨
@@ -255,14 +294,15 @@ class splaytree():
             # 왼쪽도 없고 오른쪽도 없으면 False 찾는 범위보다 큰 숫자입력한거임
             elif not current_root.left and not current_root.right:
                 return False
-    # 이거 오류 처리하기 end +1 , start +1
+    # 이거 오류 처리하기 end +1 , start -1 생각해보니 이건 구할때 임의의 노드2개를 넣으면 될듯
+
     def interval(self, start, end):
-        self.fine(end+1)
+        self.find(end+1)
         root = self.root
         lt = self.root.left
         self.root = lt
         lt.parent = None
-        self.fine(start-1)
+        self.find(start-1)
         root.left = self.root
         self.root.parent = root
         self.root = root
@@ -272,7 +312,7 @@ class splaytree():
         def print_subtree(node):
             # 전위 순회로 출력
             if node is not None:
-                print(f'{node.data}', f'{node.size}', f'{node.sum}', end=' ')
+                print(f'{node.key}', f'{node.data}', f'{node.size}', f'{node.sum}', end=' ')
                 print('left')
                 print_subtree(node.left)
                 print('right')
@@ -280,23 +320,48 @@ class splaytree():
         root = self.root
         print_subtree(root)
 
-tree = splaytree()
+# input = sys.stdin.readline
+# key = lambda x: x[1]
+# sys.setrecursionlimit(10 ** 6)
+# list = list(map(int, f.readline().split()))
+# C = int(f.readline())
 
+# INF = 9876543210
+# # f = open(r"C:\Users\H30208\Desktop\조학현 공부노트\input.txt", 'r')
+# # N, M, K = map(int, f.readline().split())
+# N, M, K = map(int, input().split())
+# numlist = splaytree()
+# for i in range(N):
+#     numlist.insert(i+1, int(input()))
+#     # numlist.insert(i+1, int(f.readline()))
+# numlist.insert(0, INF)
+# numlist.insert(N+1, -INF)
+# numlist.update()
+# for _ in range(M + K):
+#     # a, b, c = map(int, f.readline().split())
+#     a, b, c = map(int, input().split())
+#     if a == 1:
+#         numlist.find(b+1)
+#         numlist.update()
+#         numlist.root.data = c
+#     elif a == 2:
+#         print(numlist.interval(b+1, c+1))
+# numlist.dump()
 # arr = list(map(int, input().split()))
 # arr = [50, 40, 30, 45, 20, 35, 44, 46, 10, 25, 33, 34, 36, 37, 32, 31, 47]
-arr = [50, 40, 30, 45, 20, 35, 44, 46, 10, 25]
+# arr = [50, 40, 30, 45, 20, 35, 44, 46, 10, 25]
 # arr = [10, 20, 25, 26(), 30, 35, 40, 44, 45, 46, 50]
 # arr = [50, 40, 60]
-for i in arr:
-    tree.insert(i)
+# for i in arr:
+#     tree.insert(i)
 
 # tree.dump()
 # print()
 # tree.insert(20)
-print(tree.interval(1, 4))
+# print(tree.interval(1, 4))
 # tree.dump()
 # tree.delete(47)
-tree.dump()
+# tree.dump()
 # print()
 # tree.delete(30)
 # tree.dump()

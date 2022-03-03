@@ -1,6 +1,6 @@
 # class DNode:
 #     def __init__(self, elem, prev = None, next = None):
-#         self.data = elem
+#         self.key = elem
 #         self.prev = prev
 #         self.next = next
 #
@@ -21,6 +21,6 @@
 #         print(msg, end ='')
 #         node = self.front
 #         while not node == None:
-#             print(node.data, end=' ')
+#             print(node.key, end=' ')
 #             node = node.next
 #         print()

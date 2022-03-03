@@ -8,7 +8,7 @@ class TNode:
         self.right = right
 # numlist = TNode(0,1,2)
 # print(numlist.right)
-# print(numlist.data)
+# print(numlist.key)
 # print(numlist.left)
 
 # 전위 순위 루트->왼->오
@@ -39,7 +39,7 @@ def levelorder(root: TNode):
     while not queue.isEmpy():        # 큐가 공백 상태가 아닐 동안
         n = queue.dequeue()          # 큐에서 맨 앞의 노드 n을 꺼냄
         if n is not None:
-            print(n.data, end=' ')   # 노드의 정보 먼저
+            print(n.key, end=' ')   # 노드의 정보 먼저
             queue.enqueue(n.left)    # n의 왼쪽 자식 노드를 큐에 삽입
             queue.enqueue(n.right)   # n의 오른쪽 자식 노드를 큐에 삽입
 
@@ -63,9 +63,9 @@ def calc_height(n: TNode):
 
 
 # class bstnode:
-#     def __init__(self):(self, key, data):
+#     def __init__(self):(self, key, key):
 #         self.key = key
-#         self.data = data
+#         self.key = key
 #         self.left = None            # 왼쪽 자식에 대한 링크
 #         self.right = None           # 오른쪽 자식에 대한 링크
 #
@@ -97,7 +97,7 @@ class BinarySearchTree(object):
         if node is None:
             node = Node(data)
         else:
-            if data <= node.data:
+            if data <= node.key:
                 node.left = self._insert_value(node.left, data)
             else:
                 node.right = self._insert_value(node.right, data)
@@ -155,19 +155,19 @@ class BinarySearchTree(object):
         node = self.root
         while node.left is not None:
             node = node.left
-        return node.data
+        return node.key
 
     def maxnode(self) -> int:
         node = self.root
         while node.right is not None:
             node = node.right
-        return node.data
+        return node.key
 
     def dump(self):
         def print_subtree(node):
             # 전위 순회로 출력
             if node is not None:
-                print(f'{node.data}')
+                print(f'{node.key}')
                 print_subtree(node.left)
                 print_subtree(node.right)
 
