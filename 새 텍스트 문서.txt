@@ -22,3 +22,10 @@ https://www.acmicpc.net/problem/19089
 https://www.acmicpc.net/problem/13975
 
 https://www.acmicpc.net/problem/11066
+
+
+---
+https://velog.io/@corone_hi/%EA%B5%AC%EA%B0%84-%ED%8A%B8%EB%A6%AC-Segment-Tree-Python
+
+---
+https://tistory.joonhyung.xyz/15
