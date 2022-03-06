@@ -1,4 +1,4 @@
-MAX_QSIZE = 10
+MAX_QSIZE = 200*100*100
 class CircularQueue:
     def __init__(self):
         self.front = 0
