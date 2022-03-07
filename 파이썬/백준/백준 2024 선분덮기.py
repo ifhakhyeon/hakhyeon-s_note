@@ -8,7 +8,7 @@ N = int(f.readline())
 # N = int(input())
 line = []
 while True:
-    a, b = map(float, f.readline().split())
+    a, b = map(int, f.readline().split())
     # a, b = map(int, input().split())
     if a == b == 0:
         break
@@ -20,7 +20,7 @@ while True:
         line.append((a, b))
 
 line.sort(key=lambda x: x[0])
-print(line)
+# print(line)
 INF = 9876543210
 count = 0
 part_line = [0, 0]

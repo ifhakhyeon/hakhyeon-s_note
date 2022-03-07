@@ -1,6 +1,6 @@
 import sys
 input = sys.stdin.readline
-# key = lambda x: x[1]
+# key=lambda x: x[1]
 # sys.setrecursionlimit(10 ** 6)
 # list = list(map(int, f.readline().split()))
 
@@ -10,5 +10,5 @@ C = int(input())
 for _ in range(C):
     # N = int(f.readline())
     N = int(input())
-    # length = list(map(int, f.readline().split()))
+    # count = list(map(int, f.readline().split()))
     length = list(map(int, input().split()))
