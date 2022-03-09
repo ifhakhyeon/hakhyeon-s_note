@@ -330,7 +330,7 @@ class splaytree():
 # # f = open(r"C:\Users\H30208\Desktop\조학현 공부노트\input.txt", 'r')
 # # N, M, K = map(int, f.readline().split())
 # N, M, K = map(int, input().split())
-# numlist = splaytree()
+tree = splaytree()
 # for i in range(N):
 #     numlist.insert(i+1, int(input()))
 #     # numlist.insert(i+1, int(f.readline()))
@@ -349,17 +349,19 @@ class splaytree():
 # numlist.dump()
 # arr = list(map(int, input().split()))
 # arr = [50, 40, 30, 45, 20, 35, 44, 46, 10, 25, 33, 34, 36, 37, 32, 31, 47]
-# arr = [50, 40, 30, 45, 20, 35, 44, 46, 10, 25]
+arr = [50, 40, 30, 45, 20, 35, 44, 46, 10, 25]
 # arr = [10, 20, 25, 26(), 30, 35, 40, 44, 45, 46, 50]
 # arr = [50, 40, 60]
-# for i in arr:
-#     tree.insert(i)
+for i in arr:
+    tree.insert(i, i)
 
 # tree.dump()
 # print()
-# tree.insert(20)
+tree.insert(20, 20)
+tree.delete(20)
+tree.delete(20)
 # print(tree.interval(1, 4))
-# tree.dump()
+tree.dump()
 # tree.delete(47)
 # tree.dump()
 # print()
