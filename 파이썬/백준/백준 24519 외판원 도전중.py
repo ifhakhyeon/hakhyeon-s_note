@@ -16,11 +16,8 @@ for _ in range(m):
 
 cache = [[-1 for _ in range((1 << (n+1)))] for _ in range(n+1)]
 
-def dp(here, visited):
+def dp(here, visited, cost):
     if visited == (1 << n)-1:
-        # 다시 제자리로 돌아가야함
-        # 5개 면 2진수 11111는 31 임 32 는 100000
-        # 1<<0 = 1 (0b0), 1<<1 = 2 (0b1), 1<<2 = 4 (0b10)...
         return dist[here][0] or INF
 
     if cache[here][visited] > 0:
@@ -33,20 +30,18 @@ def dp(here, visited):
         # print(bin(0b *1* 010 & (1 << 3)))  #  0b *1* 000
         if dist[here][next] == 0 or (visited & (1 << next)) != 0:
             continue
-        cost = max(dp(next, (1 << next) | visited), dist[here][next])
+        ret = min(ret, dp(next, (1 << next) | visited))
 
-        if cost != INF:
-            ret = min(ret, cost)
-        else:
-            ret = INF
-
-    if ret >= INF:
-       ret = -1
     cache[here][visited] = ret
-
     return ret
 
 maxcost = dp(0, 1 << 0)
+for i in dist:
+    print(i)
+
+for i in cache:
+    print(i)
+
 ans = [0 for _ in range(n)]
 
 def dfs(idx, here, visited):
