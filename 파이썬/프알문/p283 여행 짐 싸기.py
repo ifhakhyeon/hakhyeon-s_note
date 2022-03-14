@@ -5,7 +5,7 @@ input = sys.stdin.readline
 C = int(input())
 thingsdic = {}
 thingslist = []
-# capacity 는 남은 용량, item은 아이템의 인덱스를 넣는다.
+# cost 는 남은 용량, item은 아이템의 인덱스를 넣는다.
 def peek(capactiy, item):
     # 기저 사례 물건이 꽉참 공간이 꽉안차도 만족도가 최대일 수 있음
     if item == N:
@@ -38,9 +38,9 @@ for _ in range(C):
         a, b, c = input().split()
         thingsdic[a] = int(b), int(c)
         thingslist.append(a)
-    ret = refind(W, 0, [])
-    print(peek(W, 0), len(ret))
-    for i in ret:
+    ans = refind(W, 0, [])
+    print(peek(W, 0), len(ans))
+    for i in ans:
         print(i)
 
 # 동적 계획법 너무 어려워요 싸장님..

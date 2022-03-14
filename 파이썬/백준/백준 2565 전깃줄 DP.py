@@ -19,8 +19,8 @@ def lis2(start):
 
     return cache[start]
 
-ret = 0
+ans = 0
 for i in range(n):
-    ret = max(ret, lis2(i))
+    ans = max(ans, lis2(i))
 
-print(n-ret)
+print(n - ans)

@@ -43,9 +43,9 @@ for _ in range(C):
     # mid = 0일 경우 기저사례
     sumlist.append(0); qsumlist.append(0)
 
-    ret = quantize(0, p)
+    ans = quantize(0, p)
 
-    print(ret)
+    print(ans)
     # print(sumlist)
     # print(qsumlist)
     # print(minerror(0, 0))

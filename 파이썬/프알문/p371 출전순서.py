@@ -27,7 +27,7 @@ class BinarySearchTree(object):
             elif data > node.key:
                 node.right = self._insert_value(node.right, data)
             elif data == node.key:
-                node.count += 1
+                node.b += 1
                 pass
         return node
 
@@ -101,7 +101,7 @@ class BinarySearchTree(object):
         def print_subtree(node):
             # 전위 순회로 출력
             if node is not None:
-                times = node.count
+                times = node.b
                 while times > 0:
                     print(f'{node.key}', end =' ')
                     times -= 1

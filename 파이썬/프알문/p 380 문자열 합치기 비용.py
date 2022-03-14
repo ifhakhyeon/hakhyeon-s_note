@@ -10,19 +10,19 @@ C = int(input())
 for _ in range(C):
     # N = int(f.readline())
     N = int(input())
-    # count = list(map(int, f.readline().split()))
+    # b = list(map(int, f.readline().split()))
     length = list(map(int, input().split()))
-    ret = 0
+    ans = 0
     while True:
-        # print(count)
-        # print(ret)
+        # print(b)
+        # print(ans)
         minnum1 = min(length)
         length.remove(minnum1)
         minnum2 = min(length)
         length.remove(minnum2)
         a = minnum1 + minnum2
-        ret += a
+        ans += a
         if not length:
             break
         length.append(a)
-    print(ret)
+    print(ans)

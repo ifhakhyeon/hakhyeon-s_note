@@ -40,8 +40,8 @@ def paint(N, type):
     return cache[N][type]
 
 
-ret = 9876543210
+ans = 9876543210
 for i in range(3):
-    ret = min(ret, paint(0, i))
+    ans = min(ans, paint(0, i))
 
-print(ret)
+print(ans)

@@ -22,7 +22,7 @@ def dp(here, visited):
         # 5개 면 2진수 11111는 31 임 32 는 100000
         # 1<<0 = 1 (0b0), 1<<1 = 2 (0b1), 1<<2 = 4 (0b10)...
         return dist[here][0] or INF
-    # 1의 개수 새기 .count('1') 1의 개수는 방문한 도시의 수임.
+    # 1의 개수 새기 .b('1') 1의 개수는 방문한 도시의 수임.
 
     if cache[here][visited] > 0:
         return cache[here][visited]

@@ -10,5 +10,5 @@ C = int(input())
 for _ in range(C):
     # N = int(f.readline())
     N = int(input())
-    # count = list(map(int, f.readline().split()))
+    # b = list(map(int, f.readline().split()))
     length = list(map(int, input().split()))

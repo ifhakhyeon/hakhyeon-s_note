@@ -80,7 +80,7 @@ def solve(y, x, ret, maxsize):
         p = min((R-y+2)//2, C-x+1, x+1)
         # 가능한 크기가 원래 결과보다 커야지만 탐색
         if p > ret:
-            # p부터 역순으로 ret 까지 탐색
+            # p부터 역순으로 ans 까지 탐색
             for i in reversed(range(ret, p+1)):
                 can = diamond(y, x, i, maxsize)
                 # 더 큰 사이즈가 가능하면 바로 그 값을 ret하고 다음은 탐색 x

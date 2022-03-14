@@ -19,7 +19,7 @@ def poly(n, first):
 C = int(input())
 for _ in range(C):
     n = int(input())
-    ret = 0
+    ans = 0
     for i in range(1, n+1):
-        ret += poly(n, i)
-    print(ret % mod)
+        ans += poly(n, i)
+    print(ans % mod)

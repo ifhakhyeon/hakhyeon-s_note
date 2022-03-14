@@ -11,11 +11,11 @@
 #
 #     def size(self):
 #         node = self.front
-#         count = 0
+#         b = 0
 #         while not node == None:
 #             node = node.next
-#             count += 1
-#         return count
+#             b += 1
+#         return b
 #
 #     def display(self, msg = "doublelinkedlist"):
 #         print(msg, end ='')

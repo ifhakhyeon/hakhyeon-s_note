@@ -75,7 +75,7 @@ class BinarySearchTree(object):
         if is_search is False:
             return False
 
-        if current_node.count == 1:
+        if current_node.b == 1:
             # 삭제할 노드가 자식 노드를 갖고 있지 않을 때
             if current_node.left is None and current_node.right is None:
                 if data < parent.key:
@@ -129,8 +129,8 @@ class BinarySearchTree(object):
                     change_node.left = current_node.left
                     change_node.right = current_node.right
 
-        elif current_node.count > 1:
-            current_node.count -= 1
+        elif current_node.b > 1:
+            current_node.b -= 1
 
         return True
 
@@ -150,7 +150,7 @@ class BinarySearchTree(object):
         def print_subtree(node):
             # 전위 순회로 출력
             if node is not None:
-                c = node.count
+                c = node.b
                 while c != 0:
                     print(f'{node.key}', end=' ')
                     c -= 1

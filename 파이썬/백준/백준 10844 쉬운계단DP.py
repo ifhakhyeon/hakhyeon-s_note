@@ -28,9 +28,9 @@ def stairnum(idx, num):
 
     return cache[idx][num] % mod
 
-ret = 0
+ans = 0
 
 for i in range(1,10):
-    ret += stairnum(0, i)
-    ret %= mod
-print(ret)
+    ans += stairnum(0, i)
+    ans %= mod
+print(ans)

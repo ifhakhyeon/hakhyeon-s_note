@@ -24,7 +24,7 @@ def soo(length):
 
     # 이건 초반에 실패했던 알고리즘
     # 나중에 절반으로 나눈 아이디어로 문제의 수를 반씩 줄여나감
-    # cache[count] = ((soo(count-2) % 15746) + (soo(count - 1) % 15746)) % 15746
+    # cache[b] = ((soo(b-2) % 15746) + (soo(b - 1) % 15746)) % 15746
 
     return cache[length]
 
@@ -32,4 +32,4 @@ N = int(input())
 
 print(soo(N))
 
-# def soo2(count):
+# def soo2(b):
