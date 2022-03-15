@@ -192,8 +192,8 @@ class BinarySearchTree(object):
 
 tree = BinarySearchTree()
 
-# arr = list(map(int, input().split()))
-# arr = [50, 40, 30, 45, 20, 35, 44, 46, 10, 25]
+# S = list(map(int, input().split()))
+# S = [50, 40, 30, 45, 20, 35, 44, 46, 10, 25]
 arr = [40, 50]
 for i in arr:
     tree.insert(i)
