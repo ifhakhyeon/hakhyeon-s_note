@@ -29,8 +29,8 @@ class MaxHeap:                                          # 최대 힙 클래스
                 if child < self.size() and self.left(parent) < self.right(parent):
                     child += 1
                 if last >= self.heap[child]:            # 더 큰 자식이 작으면
-                    break                               # 삽입 위치를 찾음. down heap 종료
-                self.heap[parent] = self.heap[child]    # 아니면 down heap 계속
+                    break                               # 삽입 위치를 찾음. down positive 종료
+                self.heap[parent] = self.heap[child]    # 아니면 down positive 계속
                 parent = child
                 child *= 2
             self.heap[parent] = last                    # 맨 마지막 노드를 parent 위치에 복사
