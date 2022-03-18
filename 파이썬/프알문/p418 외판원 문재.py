@@ -6,7 +6,7 @@ input = sys.stdin.readline
 
 INF = 9876543210
 # f = open(r"C:\Users\H30208\Desktop\조학현 공부노트\input.txt", 'r')
-# n = int(f.readline())
+# Y = int(f.readline())
 n = int(input())
 dist = []
 for _ in range(n):

@@ -1,23 +1,23 @@
-# for i in range(n):
+# for i in range(Y):
 #     pass
 #
-# numlist =[[0 for _ in range(n)] for _ in range(n)]
+# numlist =[[0 for _ in range(Y)] for _ in range(Y)]
 # print(numlist)
 
 
 # friend_done = []
 # def find_friend(ans,friend_done):
-#     for i in range(n):
+#     for i in range(Y):
 #         if i in friend_done:
 #             continue
 #         print(i)
 #         print(friend_done)
-#         for j in range(m):
+#         for j in range(X):
 #             if friends[j][0] == i and not(friends[j][1] in friend_done) and not(friends[j][0] in friend_done):
 #                 실패원인 1 여기서 append를 한거
 #                 friend_done.append(i)
 #                 friend_done.append(friends[j][1])
-#     if len(friend_done) == n:
+#     if len(friend_done) == Y:
 #         ans += 1
 #
 #     return(ans)
@@ -26,7 +26,7 @@
 # print(find_friend(0,friend_done))
 
 # 찾은 목록 = taken
-# n = 사람수
+# Y = 사람수
 # friends_list = 입력받은 짝꿍 목록
 
 import sys
@@ -100,7 +100,7 @@ for _ in range(C):
 #     ret짝꿍목록을 찾고
 #
 # fuc(찾은목록):
-#     n = ret가장작은수
+#     Y = ret가장작은수
 #
 #     if 가장 작은 수가 기저사례이면:
 #         return 1

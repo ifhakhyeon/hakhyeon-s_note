@@ -10,7 +10,7 @@ for _ in range(C):
     cache = [[-1 for _ in range(n)] for _ in range(k)]
 
     def solve(y, x):
-        # y 가 제일 아래 0층 이면 인덱스로 치면 높이 만큼이면
+        # Y 가 제일 아래 0층 이면 인덱스로 치면 높이 만큼이면
         if y == k:
             # x+1 반환 호수는 1부터 시작이므로
             return x+1

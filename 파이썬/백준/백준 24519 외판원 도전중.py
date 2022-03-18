@@ -6,11 +6,11 @@ input = sys.stdin.readline
 
 INF = 9876543210
 # f = open(r"C:\Users\H30208\Desktop\조학현 공부노트\input.txt", 'r')
-# n, m = map(int, f.readline().split())
+# Y, X = map(int, f.readline().split())
 n, m = map(int, input().split())
 dist = [[0 for _ in range(n)] for _ in range(n)]
 for _ in range(m):
-    # y, x, c = map(int, f.readline().split())
+    # Y, x, c = map(int, f.readline().split())
     y, x, c = map(int, input().split())
     dist[y-1][x-1] = c
 

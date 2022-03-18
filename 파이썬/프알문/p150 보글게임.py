@@ -1,4 +1,4 @@
-#hasWord(y,x,word) = 보글 게임판의 (y,x)에서 시작하는 단어 word의
+#hasWord(Y,x,word) = 보글 게임판의 (Y,x)에서 시작하는 단어 word의
 #존재여부를 반환한다.
 #보글 게임판은 5*5 이다.
 
@@ -12,9 +12,9 @@ boggle = [["N","N","N","N","S"],["N","E","E","E","N"],["N","E","Y","E","N"],["N"
 move = ((-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1))
 
 def hasWord(y,x,str):
-    # print("처음y",y)
+    # print("처음y",Y)
     # print("처음x",x)
-    # print("비교대상",boggle[y][x])
+    # print("비교대상",boggle[Y][x])
     # print("문자",str,len(str))
 
     #기저 사례 판단.
@@ -27,7 +27,7 @@ def hasWord(y,x,str):
         # print(8888)
         return False
     #str의 길이가 1 이면 참 반환
-    # and boggle[y][x] == str 의 조건을 추가 할 필요가 없는게 어짜피 위에서 검사.
+    # and boggle[Y][x] == str 의 조건을 추가 할 필요가 없는게 어짜피 위에서 검사.
     if len(str) == 1:
         # print(7777)
         return True
@@ -40,7 +40,7 @@ def hasWord(y,x,str):
         for M in move:
             # print("좌표",M)
             if boggle[y+M[0]][x+M[1]] == str[i+1]:
-                # print("갈위치",boggle[y+M[0]][x+M[1]])
+                # print("갈위치",boggle[Y+M[0]][x+M[1]])
                 # print("갈위치랑 비교",str[i+1])
                 # print("다음 들어갈것",str[1:])
 

@@ -63,7 +63,7 @@ def check(y, x, type, maxsize):
 def diamond(y, x, size, maxsize):
     if 0 <= y+1 <= R-1 and 0 <= x+1 <= C-1 and map[y+1][x+1] == '0':
         return -1
-    # 1을 빼는 이유는 사이즈가 n이라면 꼭지점에서 꼭지점까지 n-1번만 이동하기 때문
+    # 1을 빼는 이유는 사이즈가 n이라면 꼭지점에서 꼭지점까지 Y-1번만 이동하기 때문
     size -= 1
     up = check(y, x, 0, maxsize)
     left = check(y+size, x-size, 1, maxsize)
@@ -76,7 +76,7 @@ def diamond(y, x, size, maxsize):
 
 def solve(y, x, ret, maxsize):
     if map[y][x] == '1':
-        # p는 y,x에서 가능한 다이아몬드의 크기
+        # p는 Y,x에서 가능한 다이아몬드의 크기
         p = min((R-y+2)//2, C-x+1, x+1)
         # 가능한 크기가 원래 결과보다 커야지만 탐색
         if p > ret:

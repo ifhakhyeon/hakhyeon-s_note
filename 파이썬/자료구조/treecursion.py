@@ -156,7 +156,7 @@ print(c)
 skorea.dump()
 # C = int(input())
 # for _ in range(C):
-#     n = int(input())
+#     Y = int(input())
 #     russia = list(map(int, input().split()))
 #     korea = list(map(int, input().split()))
 #     skorea = BinarySearchTree()

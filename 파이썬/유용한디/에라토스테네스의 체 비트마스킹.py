@@ -6,16 +6,16 @@
 # sieve = [255 for _ in range(SIZE // 8 + 1)]
 #
 # # 3.
-# def set_composite(n):
-#     sieve[n >> 3] &= ~(1 << (n & 7))
+# def set_composite(Y):
+#     sieve[Y >> 3] &= ~(1 << (Y & 7))
 #
 # # 4.
 # set_composite(0)
 # set_composite(1)
 #
 # # 5.
-# def is_prime(n):
-#     return True if sieve[n >> 3] & (1 << (n & 7)) else False
+# def is_prime(Y):
+#     return True if sieve[Y >> 3] & (1 << (Y & 7)) else False
 #
 # # 6.
 # for i in range(2, int(SIZE ** (1/2))+1):

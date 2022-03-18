@@ -9,7 +9,7 @@ input = sys.stdin.readline
 # C = int(f.readline())
 C = int(input())
 for _ in range(C):
-    # n, m = map(int, f.readline().split())
+    # Y, X = map(int, f.readline().split())
     n, m = map(int, input().split())
     # friends = list(f.readline().split())
     friends = list(input().split())

@@ -40,7 +40,7 @@ for _ in range(C):
     do = input().strip()
     n = int(input())
     A = input().strip()
-    # A = A[1:2*n] 으로 했다가 망함 왜냐하면 수가 한자리 수가아닌 두자리 수도 나올 수 있어서
+    # A = A[1:2*Y] 으로 했다가 망함 왜냐하면 수가 한자리 수가아닌 두자리 수도 나올 수 있어서
     A = A[1:len(A)-1]
     if A != '':
         A = list(map(int, A.split(',')))

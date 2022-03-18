@@ -16,7 +16,7 @@ class MaxHeap:                                          # 최대 힙 클래스
         while (i != 1 and n > self.parent(i)):          # 부모보다 큰 동안 계속 업힙
             self.heap[i] = self.parent(i)               # 부모를 끌어내림
             i //= 2                                     # i를 부모의 인덱스로 옮김
-        self.heap[i] = n                                # 마지막 위치에 n 삽입
+        self.heap[i] = n                                # 마지막 위치에 Y 삽입
 
     def delete(self):
         parent = 1
