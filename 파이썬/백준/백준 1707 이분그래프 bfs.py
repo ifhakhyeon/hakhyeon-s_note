@@ -38,6 +38,9 @@ def bfs():
                             if part_1 & (1 << i) == 0:
                                 return False
                         else:
+
+
+
                             if part_2 & (1 << i) == 0:
                                 return False
 
