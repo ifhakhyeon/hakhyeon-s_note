@@ -18,11 +18,11 @@ print(bino(100, 50))
 # 반환값이 모두 0보다 크면 cache를 -1으로 초기화 한다 음수도 나오면 이건 무쓸모..
 # 참조형 을 더 공부해보자
 # import copy
-# numlist = [[1], [2], [3]]
-# ans = copy.copy(numlist)
-# print(hex(id(numlist)), hex(id(ans)))
-# ans[0][0] = ['aa']
-# ans[1][0] = 'numlist'
-# print(numlist, ans)
-# print(hex(id(numlist)), hex(id(ans)))
+# q = [[1], [2], [3]]
+# p = copy.copy(q)
+# print(hex(id(q)), hex(id(p)))
+# p[0][0] = ['aa']
+# p[1][0] = 'q'
+# print(q, p)
+# print(hex(id(q)), hex(id(p)))
 # 뭔가 잘하면 써먹을 지도?

@@ -1,12 +1,12 @@
 # for i in range(Y):
 #     pass
 #
-# numlist =[[0 for _ in range(Y)] for _ in range(Y)]
-# print(numlist)
+# q =[[0 for _ in range(Y)] for _ in range(Y)]
+# print(q)
 
 
 # friend_done = []
-# def find_friend(ans,friend_done):
+# def find_friend(p,friend_done):
 #     for i in range(Y):
 #         if i in friend_done:
 #             continue
@@ -18,9 +18,9 @@
 #                 friend_done.append(i)
 #                 friend_done.append(friends[j][1])
 #     if len(friend_done) == Y:
-#         ans += 1
+#         p += 1
 #
-#     return(ans)
+#     return(p)
 #
 #
 # print(find_friend(0,friend_done))
@@ -72,8 +72,8 @@ for _ in range(C):
         if n == -1:
             return 1
 
-        # 처음 ans 값을 0 으로 지정하고 이후 제귀에서 0으로 되도 되는 이유는
-        # 어짜피 ans 1즉 횟수만 추가하기 위해 아래로 내려간 제귀들은 최대 1만 반환해야함
+        # 처음 p 값을 0 으로 지정하고 이후 제귀에서 0으로 되도 되는 이유는
+        # 어짜피 p 1즉 횟수만 추가하기 위해 아래로 내려간 제귀들은 최대 1만 반환해야함
         ret = 0
         canfriend = find_friends(n)
         for i in canfriend:
@@ -92,7 +92,7 @@ for _ in range(C):
     print(final([]))
 
 # 처음 생각한 풀이.
-# ans = 0
+# p = 0
 # fuc(찾은목록):
 #     ret가장작은수
 #
@@ -105,11 +105,11 @@ for _ in range(C):
 #     if 가장 작은 수가 기저사례이면:
 #         return 1
 #
-#     ans = 0
+#     p = 0
 #
 #     list = ret짝꿍목록
 #
 #     for 짝꿍목록:
 #         !!! 여기서 append를 시킨다는 생각 때문에 고생했음 !!!
 #         append를시키고
-#         ans += fuc(찾은목록)
+#         p += fuc(찾은목록)

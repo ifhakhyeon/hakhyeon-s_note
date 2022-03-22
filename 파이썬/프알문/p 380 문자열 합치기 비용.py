@@ -15,7 +15,7 @@ for _ in range(C):
     ans = 0
     while True:
         # print(b)
-        # print(ans)
+        # print(p)
         minnum1 = min(length)
         length.remove(minnum1)
         minnum2 = min(length)

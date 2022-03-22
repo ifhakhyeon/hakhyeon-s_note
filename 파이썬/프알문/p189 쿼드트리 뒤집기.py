@@ -1,7 +1,7 @@
 
 def quad(str, ind):
     head = str[ind]  # 인덱스 번째의 글자
-    if head == 'w' or head == 'ans':  # 상하 바꿔도 변함이 없음
+    if head == 'w' or head == 'p':  # 상하 바꿔도 변함이 없음
         return head
     # let이 w나 b가 아닌 경우=let이 x일때
     ind += 1  # x가 나온 위치로부터 1칸 뒤

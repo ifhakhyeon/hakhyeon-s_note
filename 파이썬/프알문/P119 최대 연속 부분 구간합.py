@@ -11,8 +11,8 @@ def fastestMaxSum(vector):
         # print("psum :",psum, i)
         ret = max(psum, ret)
         # 동작을 알기위한 테스트코드
-        # print("ans :",ans, i)
-# print(fastestMaxSum(numlist))
+        # print("p :",p, i)
+# print(fastestMaxSum(q))
 
 #P. 119 설명 이해
 #인덱스를 반환하기 위해서는 후처리를 해야하구나..

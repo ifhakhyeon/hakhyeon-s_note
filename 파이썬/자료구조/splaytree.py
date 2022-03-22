@@ -332,21 +332,21 @@ class splaytree():
 # N, M, K = map(int, input().split())
 tree = splaytree()
 # for i in range(N):
-#     numlist.insert(i+1, int(input()))
-#     # numlist.insert(i+1, int(f.readline()))
-# numlist.insert(0, INF)
-# numlist.insert(N+1, -INF)
-# numlist.update()
+#     q.insert(i+1, int(input()))
+#     # q.insert(i+1, int(f.readline()))
+# q.insert(0, INF)
+# q.insert(N+1, -INF)
+# q.update()
 # for _ in range(M + K):
 #     # a, b, c = map(int, f.readline().split())
 #     a, b, c = map(int, input().split())
 #     if a == 1:
-#         numlist.find(b+1)
-#         numlist.update()
-#         numlist.root.data = c
+#         q.find(b+1)
+#         q.update()
+#         q.root.data = c
 #     elif a == 2:
-#         print(numlist.interval(b+1, c+1))
-# numlist.dump()
+#         print(q.interval(b+1, c+1))
+# q.dump()
 # S = list(map(int, input().split()))
 # S = [50, 40, 30, 45, 20, 35, 44, 46, 10, 25, 33, 34, 36, 37, 32, 31, 47]
 arr = [50, 40, 30, 45, 20, 35, 44, 46, 10, 25]

@@ -6,10 +6,10 @@ class TNode:
         self.data = data
         self.left = left
         self.right = right
-# numlist = TNode(0,1,2)
-# print(numlist.right)
-# print(numlist.key)
-# print(numlist.left)
+# q = TNode(0,1,2)
+# print(q.right)
+# print(q.key)
+# print(q.left)
 
 # 전위 순위 루트->왼->오
 def preorder(n: TNode):
