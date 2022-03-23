@@ -1,31 +1,52 @@
 import sys
 import math
-sys.setrecursionlimit(4010)
+# import time
+# import datetime
+
 input = sys.stdin.readline
-
 N = int(input())
-new = list(map(int, input().split()))
+poly = list(map(int, input().split()))
+# start = time.time()
+if N == 0:
+    print(f'GGG<{poly[0]}>')
+    exit(0)
+
 mod = (10**9) + 7
-ans = []
-#  * new[k]  행렬 계산?
-cache = sum(math.factorial(k)//math.factorial(k-i)for k in range(i+1, N+1))
-cache = [[0]*(N+1) for _ in range(N+1)]
+cache = [-1]*(N+1)
 
-while True:
-    # print(arr)
-    if N == 0:
-        ans.append(str(new[0]))
-        break
-    if N == 1:
-        ans.append(str(new[0]))
-        ans.append(str(new[1]))
-        break
-    else:
-        ans.append(str(new[0]))
-        for i in range(N):
-            new[i] = (sum(math.factorial(k)//math.factorial(k-i) * new[k] for k in range(i+1, N+1))//(math.factorial(i))) % mod
-        N -= 1
+def comb(n, m):
+    up = math.factorial(n)
+    down = (math.factorial(n - m)) * (math.factorial(m))
+    return (up // down) % mod
 
-result = ','.join(ans)
-print(f'GGG<{result}>')
+def cal(arr: list, x: int) -> int:
+    # print(arr, x)
+    if x == 0:
+        return arr[0]
+    if x == 1:
+        return sum(arr) % mod
+    ret = 0
+    for i in range(len(arr)):
+        ret += arr[i]*(x**i)
+    return ret % mod
 
+for i in range(N+1):
+    cache[i] = cal(poly, i)
+
+ans = [poly[0]]
+
+for i in range(1, N+1):
+    m = 0
+    for j in range(i):
+        m += (cache[j+1] * comb(i-1, j) * ((-1)**(i-j-1)))
+    m %= mod
+    m = ((m - ans[-1])+mod) % mod
+    ans.append(m)
+    # print(ans)
+# print(ans)
+a = ','.join(map(str, ans))
+print(f'GGG<{a}>')
+# end = time.time()
+# sec = (end - start)
+# result = datetime.timedelta(seconds=sec)
+# print(result)

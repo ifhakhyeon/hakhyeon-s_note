@@ -18,12 +18,11 @@ int main()
 
     cin >> age;
 
- 
 
     cout << "your age is " << age  << endl;
 
     cout << age;
-
+    
     return 0;
 
 }
