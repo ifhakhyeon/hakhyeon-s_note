@@ -42,7 +42,7 @@ for _ in range(C):
 
         for i in range(n):
             # 1<<i 비트가 켜져있고       # 이미 선수강 경우 판단
-            if cantaken & ~(1 << i) and taken & pre[i] != pre[i]:
+            if cantaken & (1 << i) and taken & pre[i] != pre[i]:
                 cantaken &= ~(1 << i)
 
         # 비트의 부분집합 순회하기!
