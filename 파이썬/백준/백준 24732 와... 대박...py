@@ -27,7 +27,7 @@ def calc_1(v, N):
     m = min(v[0], v[1])
     ans[1] = m
     psum[1] = 1 + m
-    # min, start, end (psum[end] - psum[start]) part sum form start+1 to end
+    # [min, start, end] // (psum[end] - psum[start]) part sum form start+1 to end
     cache = [[m, -1, 0]]
     for i in range(2, N):
         if v[i] >= v[i-1]:
@@ -60,6 +60,6 @@ v = [1, 2, 3]
 #     print(i)
 N = len(v)
 ans = calc(v, N)
-ans1 = calc1(v, N)
+ans1 = calc_1(v, N)
 for i in range(N):
     print(ans[i], ans1[i], ans[i] == ans1[i])
