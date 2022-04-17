@@ -46,3 +46,5 @@ for i in range(1, N+1):
         dp[i] = max(dp[i], dp[i-k] + p[k])
 
 print(dp[N])
+
+# 다보고 11057도 다시보자
