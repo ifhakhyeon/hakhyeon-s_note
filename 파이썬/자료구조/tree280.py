@@ -7,6 +7,7 @@ class TNode:
         self.left = left
         self.right = right
 # q = TNode(0,1,2)
+
 # print(q.right)
 # print(q.key)
 # print(q.left)
