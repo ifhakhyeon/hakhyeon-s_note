@@ -34,6 +34,7 @@ for _ in range(C):
                 now = tree[s]
                 now.complete = True
 
+
             elif not tree[s]:
                 tree[s] = Node()
                 now = tree[s]
@@ -88,3 +89,22 @@ for _ in range(t):
         answer = "YES"
     print(answer)
 
+'''
+trie 모듈 import 하면 정답임
+input = sys.stdin.readline
+C = int(input())
+for _ in range(C):
+    n = int(input())
+    call_number = []
+    call_book = Trie()
+    for _ in range(n):
+        a = input().rstrip()
+        call_number.append(a)
+        call_book.insert(a)
+
+    ans = True
+    for number in call_number:
+        if call_book.search_prefix(number):
+            ans = False
+            break
+'''
