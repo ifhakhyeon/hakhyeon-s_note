@@ -1,4 +1,6 @@
 MAX_QSIZE = 200*100*100
+
+
 class CircularQueue:
     def __init__(self):
         self.front = 0
@@ -49,6 +51,7 @@ class CircularQueue:
             out = self.items[self.front+1: MAX_QSIZE]\
             +self.items[0:self.rear+1]
         print("[F=%s, r=%d] ==>"%(self.front, self.rear), out)
+
 
 class CircularDeque(CircularQueue):
     def __init__(self):
