@@ -28,7 +28,7 @@ def set_parent():
     dfs(1, 0) # 루트 노드는 1번 노드
     for i in range(1, LOG):
         for j in range(1, n + 1):
-            # parent[j의][2**i 번째 부모] = parent[parent[j의][i - 1 번째 부모의][i - 1 번째 부모]
+            # parent[j의][2**i 번째 부모] = parent[parent[j의][i - 1 번째 부모의][2**(i - 1) 번째 부모]
             parent[j][i] = parent[parent[j][i - 1]][i - 1]
 
 # A와 B의 최소 공통 조상을 찾는 함수
