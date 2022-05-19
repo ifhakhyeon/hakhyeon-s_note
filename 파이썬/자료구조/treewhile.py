@@ -9,6 +9,8 @@ class Node:
         self.right = None
         self.data = data
         self.count = 1
+
+
 class BinarySearchTree(object):
     def __init__(self):
         self.root = None
@@ -42,7 +44,6 @@ class BinarySearchTree(object):
         else:
             self.root = Node(data)
         return
-
 
     def search(self, data):
         current_node = self.root
@@ -190,14 +191,14 @@ class BinarySearchTree(object):
                     return self.minnode()  # 만약 오른쪽이 None이면 비교한느 값보다 큰값 없음
 
 
-tree = BinarySearchTree()
-
-# S = list(map(int, input().split()))
+# tree = BinarySearchTree()
+#
+# # S = list(map(int, input().split()))
 # S = [50, 40, 30, 45, 20, 35, 44, 46, 10, 25]
-arr = [40, 50]
-for i in arr:
-    tree.insert(i)
-    tree.dump()
+# arr = [40, 50]
+# for i in arr:
+#     tree.insert(i)
+#     tree.dump()
 # print()
 # tree.insert(30)
 # tree.insert(26)

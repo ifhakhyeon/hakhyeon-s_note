@@ -18,6 +18,7 @@ def calc(arr, n):
         stack.append((x, y + ans[i - 1]))
     return ans
 
+
 def calc_1(v, N):
     if N == 1:
         return [1]

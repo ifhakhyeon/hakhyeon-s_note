@@ -21,3 +21,5 @@ for i in range(n):
         heapq.heappush(righ, -leftValue)
 
     print(-left[0])
+
+
