@@ -1,41 +1,34 @@
+import math
 import sys
+import heapq
+from math import sqrt
 input = sys.stdin.readline
 
-n, c = map(int, input().split())
-stuff = list(map(int, input().split()))
-l_stuff = stuff[n//2:]
-r_stuff = stuff[:n//2]
+E = map(int, input().split())
+Vroot = [i for i in range(E + 1)]
+Elist = []
+for _ in range(E):
+    Elist.append(list(map(int, input().split())))
 
-lsum = []
-rsum = []
-
-
-def find(s, _sum, length, weight):
-    if length >= len(s):
-        _sum.append(weight)
-        return
-    find(s, _sum, length+1, weight)
-    find(s, _sum, length+1, weight+s[length])
+Elist.sort(key=lambda x: x[2])
 
 
-def search(arr, target, start, end):
-    while start < end:
-        mid = (start + end) // 2
-        if arr[mid] <= target:
-            start = mid+1
+def find(x):
+    if x != Vroot[x]:
+        Vroot[x] = find(Vroot[x])
+    return Vroot[x]
+
+
+answer = 0
+for s, e, w in Elist:
+    sRoot = find(s)
+    eRoot = find(e)
+
+    if sRoot != eRoot:
+        if sRoot > eRoot:
+            Vroot[sRoot] = eRoot
         else:
-            end = mid
-    return end
+            Vroot[eRoot] = sRoot
+        answer += w
 
-
-find(l_stuff, lsum, 0, 0)
-find(r_stuff, rsum, 0, 0)
-lsum.sort()
-
-ans = 0
-for i in rsum:
-    if c < i:
-        continue
-    ans += search(lsum, c-i, 0, len(lsum))
-
-print(ans)
+print(answer)
